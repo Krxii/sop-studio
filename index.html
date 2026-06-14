@@ -268,7 +268,7 @@ function saveSOP(){
         created:new Date().toLocaleString()
     });
 
-    localStorage.setItem(
+    localStorage.getItem(
         "liquid_sops",
         JSON.stringify(sops)
     );
