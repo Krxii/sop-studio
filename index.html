@@ -243,8 +243,16 @@ button:hover{
 
 function getSOPs(){
     return JSON.parse(
-        localStorage.getItem("liquid_sops") || "[]"
-    );
+        const firebaseConfig) = {
+  apiKey: "AIzaSyDpoacY3bTDKC93am-HlNCmp9dsKd7xCk8",
+  authDomain: "sop-save.firebaseapp.com",
+  databaseURL: "https://sop-save-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "sop-save",
+  storageBucket: "sop-save.firebasestorage.app",
+  messagingSenderId: "309153713642",
+  appId: "1:309153713642:web:51f3f3b92d9d88d2fc3693"
+};
+
 }
 
 function saveSOP(){
@@ -337,15 +345,7 @@ function renderSOPs(){
 }
 
 renderSOPs();
-const firebaseConfig = {
-  apiKey: "AIzaSyDpoacY3bTDKC93am-HlNCmp9dsKd7xCk8",
-  authDomain: "sop-save.firebaseapp.com",
-  databaseURL: "https://sop-save-default-rtdb.europe-west1.firebasedatabase.app",
-  projectId: "sop-save",
-  storageBucket: "sop-save.firebasestorage.app",
-  messagingSenderId: "309153713642",
-  appId: "1:309153713642:web:51f3f3b92d9d88d2fc3693"
-};
+
 </script>
 </body>
 </html>
