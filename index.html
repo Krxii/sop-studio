@@ -2,248 +2,103 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SOP Studio</title>
 
 <style>
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
 body{
-    font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",sans-serif;
-    min-height:100vh;
-    padding:40px 20px;
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",sans-serif;
+  margin:0;
+  padding:40px;
+  min-height:100vh;
 
-    background:
-        radial-gradient(circle at top left,#7dd3fc 0%,transparent 35%),
-        radial-gradient(circle at top right,#c084fc 0%,transparent 30%),
-        radial-gradient(circle at bottom right,#60a5fa 0%,transparent 35%),
-        linear-gradient(135deg,#eef4ff,#f8fafc);
-
-    display:flex;
-    justify-content:center;
+  background:
+    radial-gradient(circle at top left,#7dd3fc,transparent 40%),
+    radial-gradient(circle at bottom right,#c084fc,transparent 40%),
+    linear-gradient(135deg,#eef4ff,#ffffff);
 }
 
 .container{
-    width:100%;
-    max-width:900px;
+  max-width:900px;
+  margin:auto;
 }
 
-.header{
-    text-align:center;
-    margin-bottom:25px;
-}
-
-.header h1{
-    font-size:48px;
-    font-weight:700;
-    color:#111827;
-}
-
-.header p{
-    margin-top:8px;
-    color:#4b5563;
+h1{
+  text-align:center;
 }
 
 .glass{
-    position:relative;
-
-    background:rgba(255,255,255,.18);
-
-    backdrop-filter:blur(40px) saturate(180%);
-    -webkit-backdrop-filter:blur(40px) saturate(180%);
-
-    border:1px solid rgba(255,255,255,.35);
-
-    border-radius:32px;
-
-    box-shadow:
-        0 10px 40px rgba(0,0,0,.08),
-        inset 0 1px 1px rgba(255,255,255,.8);
-
-    overflow:hidden;
+  background:rgba(255,255,255,.2);
+  backdrop-filter:blur(40px);
+  border-radius:30px;
+  padding:20px;
+  border:1px solid rgba(255,255,255,.4);
 }
 
-.glass::before{
-    content:"";
-    position:absolute;
-    inset:0;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(255,255,255,.55),
-            rgba(255,255,255,.08) 40%,
-            transparent 60%
-        );
-
-    pointer-events:none;
-}
-
-.form{
-    padding:28px;
-}
-
-input,
-textarea{
-    width:100%;
-    border:none;
-    outline:none;
-
-    padding:18px;
-    margin-bottom:14px;
-
-    border-radius:22px;
-
-    background:rgba(255,255,255,.30);
-
-    backdrop-filter:blur(20px);
-
-    font-size:16px;
-
-    box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.8),
-        0 4px 12px rgba(255,255,255,.15);
-}
-
-textarea{
-    min-height:180px;
-    resize:vertical;
+input,textarea{
+  width:100%;
+  padding:15px;
+  margin:10px 0;
+  border:none;
+  border-radius:18px;
+  background:rgba(255,255,255,.3);
+  outline:none;
 }
 
 button{
-    border:none;
-    cursor:pointer;
-
-    border-radius:999px;
-
-    padding:15px 28px;
-
-    font-size:15px;
-    font-weight:600;
-
-    background:
-        linear-gradient(
-            180deg,
-            rgba(255,255,255,.85),
-            rgba(255,255,255,.40)
-        );
-
-    box-shadow:
-        0 8px 24px rgba(0,0,0,.12),
-        inset 0 1px 0 rgba(255,255,255,.9);
-
-    transition:all .25s ease;
+  padding:12px 18px;
+  border:none;
+  border-radius:999px;
+  background:white;
+  cursor:pointer;
+  font-weight:600;
 }
 
-button:hover{
-    transform:translateY(-2px) scale(1.02);
+.sop{
+  margin-top:15px;
+  padding:15px;
+  border-radius:20px;
+  background:rgba(255,255,255,.25);
 }
 
-.section-title{
-    margin:28px 0 16px;
-    font-size:26px;
-    color:#111827;
+.delete{
+  background:#ff4d4d;
+  color:white;
+  margin-top:10px;
 }
-
-.sop-item{
-    margin-bottom:18px;
-    padding:24px;
-
-    background:rgba(255,255,255,.18);
-
-    backdrop-filter:blur(35px);
-
-    border-radius:28px;
-
-    border:1px solid rgba(255,255,255,.30);
-
-    box-shadow:
-        0 10px 30px rgba(0,0,0,.08),
-        inset 0 1px 0 rgba(255,255,255,.7);
-
-    position:relative;
-}
-
-.sop-item h3{
-    color:#111827;
-    margin-bottom:12px;
-}
-
-.sop-item pre{
-    white-space:pre-wrap;
-    font-family:inherit;
-    color:#374151;
-    line-height:1.6;
-}
-
-.delete-btn{
-    margin-top:15px;
-}
-
-.empty{
-    text-align:center;
-    padding:30px;
-    color:#6b7280;
-}
-
-.footer{
-    text-align:center;
-    margin-top:30px;
-    color:#6b7280;
-    font-size:14px;
-}
-
 </style>
 </head>
+
 <body>
 
 <div class="container">
 
-    <div class="header">
-        <h1>SOP Studio</h1>
-        <p>SOP Manager</p>
-    </div>
+<h1>SOP Studio</h1>
 
-    <div class="glass">
-        <div class="form">
+<div class="glass">
+  <input id="title" placeholder="SOP Title">
+  <textarea id="steps" placeholder="Write steps..."></textarea>
+  <button onclick="saveSOP()">Save SOP</button>
+</div>
 
-            <input
-                id="title"
-                placeholder="Procedure Title">
-
-            <textarea
-                id="steps"
-                placeholder="Enter each step on a new line"></textarea>
-
-            <button onclick="saveSOP()">
-                Save SOP
-            </button>
-
-        </div>
-    </div>
-
-    <h2 class="section-title">
-        Procedures
-    </h2>
-
-    <div id="sopList"></div>
-
-    <div class="footer">
-        SOP Studio • Beta Edition
-    </div>
+<div id="list"></div>
 
 </div>
 
-<script>
+<!-- FIREBASE -->
+<script type="module">
 
-function getSOPs(){
-    return JSON.parse(
-        const firebaseConfig) = {
+/* ---------------- IMPORT FIREBASE ---------------- */
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import {
+  getDatabase,
+  ref,
+  push,
+  onValue,
+  remove
+} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+
+/* ---------------- FIREBASE CONFIG ---------------- */
+const firebaseConfig = {
   apiKey: "AIzaSyDpoacY3bTDKC93am-HlNCmp9dsKd7xCk8",
   authDomain: "sop-save.firebaseapp.com",
   databaseURL: "https://sop-save-default-rtdb.europe-west1.firebasedatabase.app",
@@ -253,100 +108,64 @@ function getSOPs(){
   appId: "1:309153713642:web:51f3f3b92d9d88d2fc3693"
 };
 
-}
+/* ---------------- INIT FIREBASE ---------------- */
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+const sopRef = ref(db, "sops");
 
-function saveSOP(){
+/* ---------------- SAVE SOP ---------------- */
+window.saveSOP = async function () {
+  const title = document.getElementById("title").value.trim();
+  const steps = document.getElementById("steps").value.trim();
 
-    const title =
-        document.getElementById("title").value.trim();
+  if (!title || !steps) return;
 
-    const steps =
-        document.getElementById("steps").value.trim();
+  await push(sopRef, {
+    title,
+    steps,
+    created: Date.now()
+  });
 
-    if(!title || !steps){
-        alert("Please fill in all fields.");
-        return;
+  document.getElementById("title").value = "";
+  document.getElementById("steps").value = "";
+};
+
+/* ---------------- LOAD SOPs ---------------- */
+function loadSOPs() {
+  onValue(sopRef, (snapshot) => {
+    const data = snapshot.val();
+    const list = document.getElementById("list");
+
+    if (!data) {
+      list.innerHTML = "<p>No SOPs yet</p>";
+      return;
     }
 
-    const sops = getSOPs();
+    const items = Object.entries(data)
+      .sort((a, b) => b[1].created - a[1].created);
 
-    sops.unshift({
-        title,
-        steps,
-        created:new Date().toLocaleString()
-    });
+    list.innerHTML = items.map(([id, s]) => `
+      <div class="sop">
+        <h3>${s.title}</h3>
+        <pre>${s.steps}</pre>
 
-    localStorage.setItem(
-        "liquid_sops",
-        JSON.stringify(sops)
-    );
-
-    document.getElementById("title").value = "";
-    document.getElementById("steps").value = "";
-
-    renderSOPs();
+        <button class="delete" onclick="deleteSOP('${id}')">
+          Delete
+        </button>
+      </div>
+    `).join("");
+  });
 }
 
-function deleteSOP(index){
+/* ---------------- DELETE SOP ---------------- */
+window.deleteSOP = async function (id) {
+  await remove(ref(db, "sops/" + id));
+};
 
-    const sops = getSOPs();
-
-    sops.splice(index,1);
-
-    localStorage.setItem(
-        "liquid_sops",
-        JSON.stringify(sops)
-    );
-
-    renderSOPs();
-}
-
-function renderSOPs(){
-
-    const list =
-        document.getElementById("sopList");
-
-    const sops = getSOPs();
-
-    if(sops.length === 0){
-
-        list.innerHTML =
-            '<div class="empty">No SOPs saved yet.</div>';
-
-        return;
-    }
-
-    list.innerHTML = "";
-
-    sops.forEach((sop,index)=>{
-
-        list.innerHTML += `
-            <div class="sop-item">
-
-                <h3>${sop.title}</h3>
-
-                <pre>${sop.steps}</pre>
-
-                <small>
-                    Created: ${sop.created}
-                </small>
-
-                <br><br>
-
-                <button
-                    class="delete-btn"
-                    onclick="deleteSOP(${index})">
-                    Delete
-                </button>
-
-            </div>
-        `;
-    });
-}
-
-renderSOPs();
+/* ---------------- START APP ---------------- */
+loadSOPs();
 
 </script>
+
 </body>
 </html>
-
