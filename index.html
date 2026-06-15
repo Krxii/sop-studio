@@ -431,13 +431,42 @@ function renderSOPs(){
 }
 
 renderSOPs();
+    
+const APP_PASSWORD = "MySecretPassword123";
 
+window.login = function(){
+
+    const entered =
+        document.getElementById("password").value;
+
+    if(entered === APP_PASSWORD){
+
+        sessionStorage.setItem(
+            "sop_logged_in",
+            "true"
+        );
+
+        document.getElementById(
+            "loginScreen"
+        ).style.display = "none";
+
+    }else{
+
+        document.getElementById(
+            "errorMessage"
+        ).textContent =
+            "Incorrect password";
+    }
+};
+
+if(
+    sessionStorage.getItem("sop_logged_in")
+    === "true"
+){
+    document.getElementById(
+        "loginScreen"
+    ).style.display = "none";
+}
 </script>
-
-
-
-
-</script>
-
 </body>
 </html>
