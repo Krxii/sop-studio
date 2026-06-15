@@ -6,6 +6,57 @@
 <title>SOP Studio</title>
 
 <style>
+    .login-overlay{
+    position:fixed;
+    inset:0;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:
+        radial-gradient(circle at top left,#7dd3fc 0%,transparent 35%),
+        radial-gradient(circle at top right,#c084fc 0%,transparent 30%),
+        radial-gradient(circle at bottom right,#60a5fa 0%,transparent 35%),
+        linear-gradient(135deg,#eef4ff,#f8fafc);
+
+    z-index:9999;
+}
+
+.login-glass{
+    width:100%;
+    max-width:420px;
+
+    padding:40px;
+
+    text-align:center;
+
+    background:rgba(255,255,255,.18);
+
+    backdrop-filter:blur(40px) saturate(180%);
+    -webkit-backdrop-filter:blur(40px) saturate(180%);
+
+    border:1px solid rgba(255,255,255,.35);
+    border-radius:32px;
+
+    box-shadow:
+        0 10px 40px rgba(0,0,0,.08),
+        inset 0 1px 1px rgba(255,255,255,.8);
+}
+
+.login-glass h1{
+    margin-bottom:10px;
+}
+
+.login-glass p{
+    margin-bottom:20px;
+    color:#6b7280;
+}
+
+#errorMessage{
+    color:#ef4444;
+    margin-top:15px;
+}
 
 *{
     margin:0;
@@ -201,6 +252,23 @@ button:hover{
 </style>
 </head>
 <body>
+    <div id="loginScreen" class="login-overlay">
+    <div class="login-glass">
+        <h1>SOP Studio</h1>
+        <p>Sign in to continue</p>
+
+        <input
+            type="password"
+            id="password"
+            placeholder="Password">
+
+        <button onclick="login()">
+            Continue
+        </button>
+
+        <p id="errorMessage"></p>
+    </div>
+</div>
 
 <div class="container">
 
